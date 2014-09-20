@@ -1,4 +1,38 @@
-ruby-install
-============
+Role Name
+=========
 
-Ansible Role for ruby-install (https://github.com/postmodern/ruby-install)
+Installs ruby-install.
+
+Requirements
+------------
+
+Works ONLY on Ubuntu 14.04.
+
+Role Variables
+--------------
+
+ruby_install_version : defaults to '0.4.3'
+
+Dependencies
+------------
+
+None
+
+Example Playbook
+----------------
+
+Example Playbook:
+
+    - hosts: servers
+      roles:
+         - { role: innohub-ansible.ruby-install }
+
+Example Role:
+
+    dependencies:
+      - { role: ruby_install }
+
+License
+-------
+
+MIT

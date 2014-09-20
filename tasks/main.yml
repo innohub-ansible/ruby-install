@@ -1,0 +1,12 @@
+---
+# We need to make use of facts to check for
+# the version of of ruby-install
+- name: check for ruby-install
+  ignore_errors: yes
+  register: installed_ruby_install_version
+  shell: ruby-install --version | awk '{ print $2 }'
+
+# Proceed with installation only if existing verion
+# is not equal to specified version
+- include: install_ruby_install.yml
+  when: installed_ruby_install_version.stdout != ruby_install_version
