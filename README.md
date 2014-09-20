@@ -1,5 +1,5 @@
-Role Name
-=========
+InnoHub Ansible : ruby-install [![Build Status](https://travis-ci.org/innohub-ansible/ruby-install.svg?branch=master)](https://travis-ci.org/innohub-ansible/ruby-install)
+==========================================================================================================================================================================
 
 Installs ruby-install.
 
