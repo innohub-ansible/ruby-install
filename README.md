@@ -6,12 +6,12 @@ Installs ruby-install.
 Requirements
 ------------
 
-Works ONLY on Ubuntu 14.04.
+Tested ONLY on Ubuntu 14.04 Trusty.
 
 Role Variables
 --------------
 
-ruby_install_version : defaults to '0.4.3'
+ruby_install_version : defaults to '0.5.0'
 
 Dependencies
 ------------
