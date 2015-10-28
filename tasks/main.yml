@@ -1,7 +1,15 @@
 ---
 
+
+- name: Create working directory
+  file:
+    path: /usr/src
+    state: directory
+
 - name: Download ruby-install
-  shell: wget -O ruby-install-{{ ruby_install_version }}.tar.gz https://github.com/postmodern/ruby-install/archive/v{{ ruby_install_version }}.tar.gz
+  get_url:
+    url: https://github.com/postmodern/ruby-install/archive/v{{ ruby_install_version }}.tar.gz
+    dest: /usr/src/ruby-install-{{ ruby_install_version }}.tar.gz
   when:
     ansible_local is not defined or
     ansible_local.ruby_install is not defined or
@@ -9,19 +17,19 @@
   register: ruby_install_downloaded
 
 - name: Extract ruby-install
-  shell: tar -xzvf ruby-install-{{ ruby_install_version }}.tar.gz
+  shell: tar -C /usr/src -xzvf /usr/src/ruby-install-{{ ruby_install_version }}.tar.gz
   when: ruby_install_downloaded | changed
 
 - name: Install ruby-install
   sudo: true
   shell:
-    chdir=ruby-install-{{ ruby_install_version }}
+    chdir=/usr/src/ruby-install-{{ ruby_install_version }}
     make install
   when: ruby_install_downloaded | changed
   register: ruby_install_installed
 
 - name: Clean up ruby-install sources
-  shell: rm -rf ruby-install-*
+  shell: rm -rf /usr/src/ruby-install-*
   when: ruby_install_downloaded | changed
 
 #
